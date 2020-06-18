@@ -1,0 +1,334 @@
+// Variables
+
+$breakpoint_tablet: 680px;
+$breakpoint_desktop: 1040px;
+$max_header_width: 1200px;
+
+$color_background: #FAFAFA;
+$color_background_alt: #e0e5eb;
+$color_text: #121212;
+$color_text_alt: #36bae6;
+$color_border: #e0e5eb;
+
+$transition_link: .14s ease-in-out;
+$transition_anim: .22s ease-in-out;
+
+html {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 1.25em;
+}
+
+a {
+    display: inline-block;
+
+    text-decoration: none;
+
+    &.button {
+        padding: 0.5rem 1rem;
+
+        background: $color_text;
+
+        color: $color_background;
+        text-align: center;
+
+        &.primary {
+            background: $color_text_alt;
+            color: $color_background_alt;
+        }
+    }
+}
+
+/* Header */
+
+header {
+    position: sticky;
+    top: 0;
+
+    height: 3.5rem;
+    width: 100%;
+
+    background: $color_background;
+}
+header .container {
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: $max_header_width;
+
+    padding: 0 1.5rem;
+
+    margin: 0 auto;
+    border-bottom: 1px solid $color_border;
+
+    background: $color_background;
+
+    & > .logo {
+        height: 1rem;
+        padding: 1.25rem 0;
+    }
+}
+
+// Hamburger styles
+input.hamburger-button {
+    display: none; // Hide checkbox
+
+    & ~ label {
+        position: relative;
+        padding: 0.25rem;
+
+        width: 1.5rem;
+        height: 1.25rem;
+
+        & > div,
+        & > div::before,
+        & > div::after {
+            content: "";
+            position: absolute;
+            top: 0.825rem;
+
+            height: 0.125rem;
+            width: 1.5rem;
+
+            opacity: 1;
+
+            background: $color_text;
+
+            transition: $transition_link;
+        }
+        & > div::before {
+            top: -0.5rem;
+        }
+        & > div::after {
+            top: 0.5rem;
+        }
+    }
+}
+
+// Menu OPEN styles
+header .container .hamburger-button:checked {
+    & ~ label {
+        & > div {
+            width: 0;
+            background: transparentize($color_text, 1);
+        }
+        & > div::before {
+            transform: rotateZ(45deg);
+            top: -0rem;
+        }
+        & > div::after {
+            transform: rotateZ(-45deg);
+            top: -0rem;
+        }
+    }
+
+    & ~ .menu {
+        left: 0;
+
+        &::after {
+            height: 100vh;
+        }
+    }
+}
+
+// Default menu styles
+// Menu CLOSED styles
+header .container .menu {
+    position: absolute;
+    z-index: -1;
+    top: 3.5rem;
+    left: calc(-100vw - 3rem); // VP + padding
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, max-content);
+
+    width: 100%;
+
+    background: $color_background;
+
+    transition: $transition_anim;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+
+        height: 0;
+        width: 100vw;
+
+        background: $color_background;
+
+        transition: $transition_anim;
+    }
+
+    nav {
+        grid-area: auto; // Unset from other layouts
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+
+        & > li > a {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 1rem 1.5rem;
+
+            text-align: left;
+            color: $color_text;
+
+            transition: $transition_link;
+
+            &:hover {
+                color: $color_text_alt;
+                background: $color_background_alt;
+            }
+        }
+    }
+
+    div.buttons {
+        grid-area: auto; // Unset from other layouts
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+
+        padding: 1rem 1.5rem;
+        border-top: 1px solid $color_border;
+
+        background: $color_background;
+
+        & > * {
+            margin-right: 0.5rem;
+        }
+        & > *:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+/* Media queries */
+@media only screen and (min-width: $breakpoint_tablet) {
+    header {
+        height: 6.5rem;
+        border-bottom: 1px solid $color_border;
+    }
+
+    header .container {
+        left: 50%;
+        transform: translate(-50%, 0);
+        justify-content: flex-start;
+
+        border: none;
+    }
+
+    input.hamburger-button ~ label {
+        display: none;
+    }
+
+    header .container .menu {
+        z-index: unset;
+        top: 0;
+        left: 0;
+
+        display: grid;
+        grid-template-columns: auto max-content;
+        grid-template-rows: 3.5rem 3rem;
+
+        background: none;
+
+        &::after {
+            display: none;
+        }
+
+        div.buttons {
+            grid-area: 1/2/2/3;
+            
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+
+        nav {
+            grid-area: 2/1/3/3;
+        }
+
+        nav ul {
+            flex-direction: row;
+            justify-content: center;
+
+            & > li {
+                flex: 1;
+            }
+            & > li > a {
+                display: inline-block;
+                width: 100%;
+
+                text-align: center;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $breakpoint_desktop) {
+    header {
+        height: 3.5rem;
+    }
+
+    header .container .menu {
+        box-sizing: border-box;
+        grid-template-columns: 4rem auto max-content;
+        grid-template-rows: 1fr;
+
+        height: 3.5rem;
+
+        padding: 0 1.5rem;
+
+        nav {
+            grid-area: 1/2/2/3;
+        }
+
+        div.buttons {
+            grid-area: 1/3/2/4;
+            padding-left: 1.5rem;
+        }
+
+        nav ul {
+            align-items: flex-start;
+            justify-content: flex-end;
+
+            height: 100%;
+            width: 100%;
+
+            & > li {
+                flex: 0;
+            }
+
+            & > li > a {
+                width: max-content;
+                padding: 1.25rem 1.5rem;
+            }
+        }
+    }
+}
+
+/* Other bits */
+
+.page-content {
+    min-height: 1200px;
+}

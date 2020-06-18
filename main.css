@@ -348,6 +348,7 @@ header .container .menu div.buttons > *:last-child {
           box-sizing: border-box;
   min-height: 1200px;
   max-width: 1200px;
+  margin: 0 auto;
   padding: 1rem 1.5rem;
 }
 

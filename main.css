@@ -1,7 +1,6 @@
 html {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
-  line-height: 1.25em;
   overflow-x: hidden;
 }
 
@@ -118,10 +117,6 @@ header .container .hamburger-button:checked ~ .menu {
   left: 0;
 }
 
-header .container .hamburger-button:checked ~ .menu::after {
-  height: 100vh;
-}
-
 header .container .menu {
   position: absolute;
   z-index: -1;
@@ -144,7 +139,7 @@ header .container .menu::after {
   content: "";
   position: absolute;
   z-index: -1;
-  height: 0;
+  height: 100vh;
   width: 100vw;
   background: #FAFAFA;
   -webkit-transition: 0.22s ease-in-out;
@@ -183,23 +178,30 @@ header .container .menu nav ul > li > a:hover {
 
 header .container .menu div.buttons {
   grid-area: auto;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-  padding: 1rem 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 0.5rem 1rem;
   border-top: 1px solid #e0e5eb;
   background: #FAFAFA;
 }
 
 header .container .menu div.buttons > * {
-  margin-right: 0.5rem;
-}
-
-header .container .menu div.buttons > *:last-child {
-  margin-right: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
+  margin: 0.5rem;
 }
 
 /* Media queries */
@@ -232,6 +234,8 @@ header .container .menu div.buttons > *:last-child {
     -ms-grid-rows: 3.5rem 3rem;
         grid-template-rows: 3.5rem 3rem;
     background: none;
+    -webkit-transition: none;
+    transition: none;
   }
   header .container .menu::after {
     display: none;
@@ -244,9 +248,6 @@ header .container .menu div.buttons > *:last-child {
     grid-area: 1/2/2/3;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -303,6 +304,8 @@ header .container .menu div.buttons > *:last-child {
         grid-template-rows: 1fr;
     height: 3.5rem;
     padding: 0 1.5rem;
+    -webkit-transition: none;
+    transition: none;
   }
   header .container .menu nav {
     -ms-grid-row: 1;
@@ -317,7 +320,11 @@ header .container .menu div.buttons > *:last-child {
     -ms-grid-column: 3;
     -ms-grid-column-span: 1;
     grid-area: 1/3/2/4;
-    padding-left: 1.5rem;
+  }
+  header .container .menu div.buttons > * {
+    min-width: -webkit-max-content;
+    min-width: -moz-max-content;
+    min-width: max-content;
   }
   header .container .menu nav ul {
     -webkit-box-align: start;
@@ -354,14 +361,16 @@ header .container .menu div.buttons > *:last-child {
 
 .page-content h1 {
   margin-top: 1.5rem;
+  font-size: 3.25rem;
   font-weight: 300;
-  font-size: 4.25rem;
+  word-break: break-all;
 }
 
 .page-content h2 {
   margin-top: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 500;
-  font-size: 2.25rem;
+  word-break: break-all;
 }
 
 .page-content p {

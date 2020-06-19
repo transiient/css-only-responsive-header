@@ -142,8 +142,6 @@ header .container .menu::after {
   height: 100vh;
   width: 100vw;
   background: #FAFAFA;
-  -webkit-transition: 0.22s ease-in-out;
-  transition: 0.22s ease-in-out;
 }
 
 header .container .menu nav {

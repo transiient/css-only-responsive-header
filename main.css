@@ -12,7 +12,7 @@ a {
 a.button {
   padding: 0.5rem 1rem;
   background: #121212;
-  color: #FAFAFA;
+  color: #fafafa;
   text-align: center;
 }
 
@@ -28,7 +28,7 @@ header {
   top: 0;
   height: 3.5rem;
   width: 100%;
-  background: #FAFAFA;
+  background: #fafafa;
 }
 
 header .container {
@@ -37,6 +37,8 @@ header .container {
           box-sizing: border-box;
   top: 0;
   left: 0;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,7 +57,7 @@ header .container {
   padding: 0 1.5rem;
   margin: 0 auto;
   border-bottom: 1px solid #e0e5eb;
-  background: #FAFAFA;
+  background: #fafafa;
 }
 
 header .container > .logo {
@@ -115,13 +117,16 @@ header .container .hamburger-button:checked ~ label > div::after {
 
 header .container .hamburger-button:checked ~ .menu {
   left: 0;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 header .container .menu {
   position: absolute;
   z-index: -1;
   top: 3.5rem;
-  left: calc(-100vw - 3rem);
+  -webkit-transform: translateX(calc(-100vw - 3rem));
+          transform: translateX(calc(-100vw - 3rem));
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;
@@ -130,7 +135,7 @@ header .container .menu {
       grid-template-rows: repeat(2, -webkit-max-content);
       grid-template-rows: repeat(2, max-content);
   width: 100%;
-  background: #FAFAFA;
+  background: #fafafa;
   -webkit-transition: 0.22s ease-in-out;
   transition: 0.22s ease-in-out;
 }
@@ -141,7 +146,7 @@ header .container .menu::after {
   z-index: -1;
   height: 100vh;
   width: 100vw;
-  background: #FAFAFA;
+  background: #fafafa;
 }
 
 header .container .menu nav {
@@ -189,7 +194,7 @@ header .container .menu div.buttons {
       flex-wrap: wrap;
   padding: 0.5rem 1rem;
   border-top: 1px solid #e0e5eb;
-  background: #FAFAFA;
+  background: #fafafa;
 }
 
 header .container .menu div.buttons > * {
@@ -224,6 +229,8 @@ header .container .menu div.buttons > * {
     z-index: unset;
     top: 0;
     left: 0;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: auto max-content;

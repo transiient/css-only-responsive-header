@@ -4,14 +4,14 @@ $breakpoint_tablet: 680px;
 $breakpoint_desktop: 1040px;
 $max_header_width: 1200px;
 
-$color_background: #FAFAFA;
+$color_background: #fafafa;
 $color_background_alt: #e0e5eb;
 $color_text: #121212;
 $color_text_alt: #36bae6;
 $color_border: #e0e5eb;
 
-$transition_link: .14s ease-in-out;
-$transition_anim: .22s ease-in-out;
+$transition_link: 0.14s ease-in-out;
+$transition_anim: 0.22s ease-in-out;
 
 html {
     font-family: "Montserrat", sans-serif;
@@ -56,6 +56,7 @@ header .container {
     box-sizing: border-box;
     top: 0;
     left: 0;
+    transform: translateX(0);
 
     display: flex;
     flex-direction: row;
@@ -133,6 +134,7 @@ header .container .hamburger-button:checked {
 
     & ~ .menu {
         left: 0;
+        transform: translateX(0);
     }
 }
 
@@ -142,7 +144,8 @@ header .container .menu {
     position: absolute;
     z-index: -1;
     top: 3.5rem;
-    left: calc(-100vw - 3rem); // VP + padding
+    // left: calc(-100vw - 3rem); // VP + padding
+    transform: translateX(calc(-100vw - 3rem));
 
     display: grid;
     grid-template-columns: 1fr;
@@ -235,6 +238,7 @@ header .container .menu {
         z-index: unset;
         top: 0;
         left: 0;
+        transform: translateX(0);
 
         display: grid;
         grid-template-columns: auto max-content;
@@ -250,7 +254,7 @@ header .container .menu {
 
         div.buttons {
             grid-area: 1/2/2/3;
-            
+
             box-sizing: border-box;
             flex-direction: row;
 

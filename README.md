@@ -1,3 +1,5 @@
+**This project is not currently being developed, but if PRs are submitted they'll be checked merged where suitable!**
+
 # Responsive CSS-only Header
 
 * **NO JavaScript**
